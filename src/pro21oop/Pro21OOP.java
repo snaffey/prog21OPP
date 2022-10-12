@@ -32,13 +32,35 @@ public class Pro21OOP {
         Conta conta3 = new Conta();
         System.out.println("Saldo da conta3 -> " + conta3.saldo);
 
-        ContaCorrente cc = new ContaCorrente("Ana");
-        System.out.println("Nome: " + cc.getNome());
-        cc.setNumero(25);
-        System.out.println("Numero: " + cc.getNumero());
-        ContaCorrente cc1 = new ContaCorrente("Maria");
+        ContaCorrente ccAna = new ContaCorrente("Ana");
+        System.out.println("Nome: " + ccAna.getNome());
+        ccAna.setNumero(25);
+        System.out.println("Numero: " + ccAna.getNumero());
+        ContaCorrente ccMaria = new ContaCorrente("Maria");
         int qt = ContaCorrente.getNumeroContasCriadas();
         System.out.println("Numero de contas criadas: " + qt);
+
+        // Array de objetos
+
+        // int[] numeros = new int[2];
+        ContaCorrente[] lcc = new ContaCorrente[5];
+        ContaCorrente[] lcc1;
+
+        lcc1 = new ContaCorrente[2];
+        // Erro porque nao tem valor valido
+        // System.out.println("1 pos -> " + lcc[0].getNome());
+
+        lcc[0] = ccAna;
+        lcc[1] = ccMaria;
+        System.out.println("1 pos -> " + lcc[0].getSaldo());
+        System.out.println("2 pos -> " + lcc[1].getSaldo());
+        lcc[0].deposito(50);
+        lcc[1].levantamento(100);
+        System.out.println("Ana -> " + lcc[0].getSaldo());
+        System.out.println("Maria -> " + lcc[1].getSaldo());
+
+        lcc[2] = new ContaCorrente("Manel");
+
     }
 
 }

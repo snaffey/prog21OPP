@@ -6,10 +6,10 @@ public class ContaCorrente {
      * Modificadores -> Foca no modelo, pode ser acedida pelo obj mas nao
      * modificadas
      */
-    private int numeroContasCriadas;
+    private static int numeroContasCriadas;
 
     public static int getNumeroContasCriadas() {
-        return numeroContasCriadas;
+        return ContaCorrente.numeroContasCriadas;
     }
 
     private int numero;
@@ -47,6 +47,20 @@ public class ContaCorrente {
     public void setNumero(int n) {
         if (n > 20)
             this.numero = n;
+    }
+
+    public double getSaldo() {
+        return this.saldo;
+    }
+
+    void levantamento(double qt) {
+        double novoSaldo = this.saldo - qt;
+        this.saldo = novoSaldo;
+    }
+
+    void deposito(double qt) {
+        // this.saldo = this.saldo + qt;
+        this.saldo += qt;
     }
 
     public static void main(String[] args) {
