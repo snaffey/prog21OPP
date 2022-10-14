@@ -58,8 +58,53 @@ public class Pro21OOP {
         lcc[1].levantamento(100);
         System.out.println("Ana -> " + lcc[0].getSaldo());
         System.out.println("Maria -> " + lcc[1].getSaldo());
-
         lcc[2] = new ContaCorrente("Manel");
+
+        // Array iterator
+        /*
+         * System.out.println("Nº de contas -> " + lcc.length);
+         * for(int i = 0; i < lcc.length; i++) {
+         * if(lcc[i] != null) {
+         * System.out.println("i"+lcc[i]);
+         * System.out.println("Nome: " + lcc[i].getNome());
+         * System.out.println("Saldo: " + lcc[i].getSaldo());
+         * }
+         * }
+         */
+
+        /*
+         * Exemplo 2 com for.in
+         * Sintaxe
+         * for(tipo_de_dados var de item atual: Array)
+         */
+        for (ContaCorrente cx : lcc) {
+            if (cx != null) {
+                System.out.println("Nome: " + cx.getNome());
+            }
+        }
+
+        // ----
+        // OPP- Array de referências
+        // Criar array contas
+        ContaCorrente[] contas = new ContaCorrente[20];
+        // Percorrer contas forma automática
+        for (int i = 0; i < contas.length; i++) {
+            contas[i] = new ContaCorrente("Conta " + i);
+            // atribuir acréscimo de 20% no saldo de cada conta que seja de índice ímpar
+            if (i % 2 != 0) {
+                contas[i].deposito(contas[i].getSaldo() * 0.2);
+            }
+            // Para contas com saldo inferior a 100€, atribuir um acréscimo de 1000€
+            if (contas[i].getSaldo() < 100) {
+                contas[i].deposito(1000);
+            }
+        }
+        // Criar uma rotina que devolva a media do saldo de todas as contas
+        double media = 0;
+        for (ContaCorrente cx : contas) {
+            media += cx.getSaldo();
+            System.out.println("Nome: " + cx.getNome() + " Saldo: " + cx.getSaldo());
+        }
 
     }
 
